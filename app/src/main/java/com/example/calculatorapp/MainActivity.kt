@@ -15,15 +15,15 @@ import com.microsoft.appcenter.crashes.Crashes
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCenter.start(application, "5f9affd6-76b5-465a-b745-5726003b4bd4", Analytics::class.java, Crashes::class.java)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        AppCenter.start(getApplication(), "5f9affd6-76b5-465a-b745-5726003b4bd4", Analytics::class.java, Crashes::class.java);
-
 
         val firstNumber = findViewById<EditText>(R.id.firstNumber)
         val secondNumber = findViewById<EditText>(R.id.secondNumber)
         val addButton = findViewById<Button>(R.id.addButton)
+        val subtractButton = findViewById<Button>(R.id.subtractButton)
         val resultText = findViewById<TextView>(R.id.resultText)
 
         addButton.setOnClickListener {
@@ -37,5 +37,20 @@ class MainActivity : AppCompatActivity() {
                 resultText.text = "Please enter valid numbers"
             }
         }
+
+        subtractButton.setOnClickListener {
+            val number1 = firstNumber.text.toString().toDoubleOrNull()
+            val number2 = secondNumber.text.toString().toDoubleOrNull()
+
+            if (number1 != null && number2 != null) {
+                val result = number1 - number2
+                resultText.text = "Result: $result"
+            } else {
+                resultText.text = "Please enter valid numbers"
+            }
+        }
     }
 }
+
+//            Crashes.generateTestCrash()
+//                Analytics.trackEvent("ADD_BUTTON_CLICKED");
