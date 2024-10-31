@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        AppCenter.start(getApplication(), "5f9affd6-76b5-465a-b745-5726003b4bd4", Analytics::class.java, Crashes::class.java);
+//        AppCenter.start(getApplication() "5f9affd6-76b5-465a-b745-5726003b4bd4", Analytics::class.java, Crashes::class.java);
 
 
         val firstNumber = findViewById<EditText>(R.id.firstNumber)
